@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { state } from '../gameState';
 import { popTransition } from '../utils/transitions';
+import { playPopSound } from '../utils/sounds';
 
 const props = defineProps<{
   scale: number;
