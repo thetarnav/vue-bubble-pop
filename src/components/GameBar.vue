@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { state, resetGame } from '../gameState';
 import { fade } from '../utils/transitions';
+import ConfettiExplosion from 'vue-confetti-explosion';
 
 const onEnter = fade('in', 1500);
 const onLeave = fade('out', 400);
@@ -11,7 +12,7 @@ const onLeave = fade('out', 400);
     <section v-if="state.score === state.finalScore && state.session">
       <h1>You Win 🥳</h1>
       <button @click="resetGame">Play Again</button>
-      <!-- <ConfettiExplosion /> -->
+      <ConfettiExplosion />
     </section>
     <aside v-else-if="state.session" class="glass">
       <h1>Bubble Pop</h1>

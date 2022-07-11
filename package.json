@@ -10,7 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.37"
+    "vue": "^3.2.37",
+    "vue-confetti-explosion": "^1.0.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
