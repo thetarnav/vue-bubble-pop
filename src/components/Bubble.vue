@@ -36,7 +36,6 @@ const onLeave = popTransition(200);
       <Transition @leave="onLeave">
         <div v-if="!popped" class="bubble" @click="pop" />
       </Transition>
-      <!-- use:popSound -->
     </div>
   </div>
 </template>
