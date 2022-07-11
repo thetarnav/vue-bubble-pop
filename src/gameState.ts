@@ -6,11 +6,9 @@ export const state = useLocalReactive('game-state', {
   totalBubbles: 50,
   lastScore: null as number | null,
   finalScore: 10,
-  bubbles: 50,
 });
 state.score = 0;
 state.session = false;
-state.lastScore = state.lastScore || null;
 
 export function startGame() {
   state.session = true;

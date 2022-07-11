@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { state } from '../gameState';
+import { popTransition } from '../utils/transitions';
 
 const props = defineProps<{
   scale: number;
@@ -15,21 +16,24 @@ const pop = () => {
   state.score += 1;
   popped.value = true;
 };
+
+const onLeave = popTransition(200);
 </script>
 
 <template>
   <div
     class="positioner"
     :style="{
-      '--scale': props.scale,
-      '--offset': `${props.offset}%`,
-      '--delay': `${props.delay}ms`,
-      '--speed': `${props.speed}s`,
+      '--scale': scale,
+      '--offset': `${offset}%`,
+      '--delay': `${delay}ms`,
+      '--speed': `${speed}s`,
     }"
   >
     <div class="positioner-inner">
-      <div v-if="!popped" class="bubble" @click="pop" />
-      <!-- transition:popTransition|local -->
+      <Transition @leave="onLeave">
+        <div v-if="!popped" class="bubble" @click="pop" />
+      </Transition>
       <!-- use:popSound -->
     </div>
   </div>
@@ -39,9 +43,7 @@ const pop = () => {
 .positioner {
   --bubble-size: calc(200px * var(--scale));
 
-  animation: position var(--speed) linear infinite forwards;
-
-  animation-delay: var(--delay);
+  animation: position var(--speed) var(--delay) linear infinite forwards;
 
   position: fixed;
   z-index: var(--zindex, 99);

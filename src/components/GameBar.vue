@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { state, resetGame } from '../gameState';
 import { fade } from '../utils/transitions';
+
+const onEnter = fade('in', 1500);
+const onLeave = fade('out', 400);
 </script>
 
 <template>
-  <Transition appear @enter="fade('in', 1500)" @leave="fade('out', 400)">
+  <Transition appear @enter="onEnter" @leave="onLeave" :css="false">
     <section v-if="state.score === state.finalScore && state.session">
       <h1>You Win 🥳</h1>
       <button @click="resetGame">Play Again</button>
