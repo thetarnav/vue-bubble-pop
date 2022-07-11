@@ -14,6 +14,7 @@ const props = defineProps<{
 const popped = ref(false);
 
 const pop = () => {
+  playPopSound();
   state.score += 1;
   popped.value = true;
 };

@@ -1,10 +1,13 @@
-const sounds = ['/sounds/pop1.mp3', '/sounds/pop2.mp3'];
+const getSoundURL = (file: string) =>
+  `https://github.com/thetarnav/vue-bubble-pop/blob/main/public/sounds/${file}?raw=true`;
 
-const getRandomSound = () => sounds[Math.round(Math.random())];
+const audio1 = new Audio(getSoundURL('pop1.mp3'));
+const audio2 = new Audio(getSoundURL('pop2.mp3'));
 
-const popSound = new Audio(getRandomSound());
-popSound.play();
+const sounds = [audio1, audio2];
+
 export function playPopSound() {
-  // popSound.
-  // node.dispatchEvent(new CustomEvent("pop"))
+  const sound = sounds[Math.round(Math.random())];
+  sound.currentTime = 0;
+  sound.play();
 }
